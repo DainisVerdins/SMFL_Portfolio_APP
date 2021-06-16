@@ -1,10 +1,7 @@
 // Tetris.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-
-// left on adding to linker librarries of SFML
-
-
+//Need to fix MINGW shit some errors appiered
 
 #include <iostream>
 #include<SFML/Graphics.hpp>
@@ -13,7 +10,6 @@ constexpr auto FRAME_HEIGHT = 480;
 
 
 constexpr auto SHAPE_SIZE = 150.f;
-//s
 
 int main()
 {
