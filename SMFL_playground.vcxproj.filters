@@ -790,8 +790,16 @@
     <ClInclude Include="src\libs\SFML-2.5.1\include\SFML\Window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\libs\AudioFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="src\libs\SFML-2.5.1\lib\sfml-graphics-d.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\music\test1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>
