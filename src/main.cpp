@@ -11,7 +11,6 @@
 constexpr auto FRAME_WIDTH = 680;
 constexpr auto FRAME_HEIGHT = 480;
 constexpr auto SHAPE_SIZE = 150.f;
-namespace fs = std::filesystem;
 
 int main()
 {
@@ -19,8 +18,15 @@ int main()
 
 	// create the window
 	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "First app", sf::Style::Close | sf::Style::Resize);
+	
 	sf::RectangleShape player(sf::Vector2f(SHAPE_SIZE, SHAPE_SIZE));
-	player.setFillColor(sf::Color::Green);
+	player.setPosition((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2));
+
+	sf::Texture playerTexture;
+	playerTexture.loadFromFile("./res/background.jpg");//need to add relative path to image// why from uper level of project not from exe file?
+
+	player.setTexture(&playerTexture);
+
 
 	// run the program as long as the window is open
 	while (window.isOpen()) {
@@ -35,36 +41,11 @@ int main()
 			case sf::Event::Closed:
 				window.close();
 				break;
-			case sf::Event::TextEntered:
-				std::printf("%c", evnt.text.unicode);
-				//break;
-				break;
 			default:
 				break;
 				//return -1;
 			}
 		}
-
-		//arrows control
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			player.move(0.1f,0.0f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			player.move(0.0f, 0.1f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			player.move(-0.1f, 0.0f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		{
-			player.move(0.0f,-0.1f);
-		}
-
-
-
 
 		window.clear();
 

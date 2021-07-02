@@ -612,6 +612,7 @@
     <Image Include="src\libs\SFML-2.5.1\doc\html\classsf_1_1AlResource.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\libs\AudioFile.h" />
     <ClInclude Include="src\libs\SFML-2.5.1\include\SFML\Audio.hpp" />
     <ClInclude Include="src\libs\SFML-2.5.1\include\SFML\Audio\AlResource.hpp" />

@@ -793,6 +793,9 @@
     <ClInclude Include="src\libs\AudioFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="src\libs\SFML-2.5.1\lib\sfml-graphics-d.lib" />
