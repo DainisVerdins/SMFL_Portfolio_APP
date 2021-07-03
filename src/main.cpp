@@ -6,7 +6,7 @@
 #include<filesystem>
 #include<string>
 #include<SFML/Graphics.hpp> //sf namespace
-#include<SFML/Audio.hpp>
+#include"animation.h"
 
 constexpr auto FRAME_WIDTH = 680;
 constexpr auto FRAME_HEIGHT = 480;
@@ -18,7 +18,7 @@ int main()
 
 	// create the window
 	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "SFML playground", sf::Style::Close | sf::Style::Resize);
-	
+
 	sf::RectangleShape player(sf::Vector2f(SHAPE_SIZE, SHAPE_SIZE));
 	player.setPosition((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2));
 
@@ -26,22 +26,22 @@ int main()
 	playerTexture.loadFromFile("./res/tux_from_linux.png");//need to add relative path to image// why from uper level of project not from exe file?
 	player.setTexture(&playerTexture);
 
-	sf::Vector2u textureSize = playerTexture.getSize();
 
-	//get size of one pinguine block
-	textureSize.x /= 3;
-	textureSize.y /= 9;
+	Animation PlayerAnimation(&playerTexture, sf::Vector2u(3, 9), 0.3f);
 
-	//get needed image part from whole image
-	player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8,textureSize.x,textureSize.y));
+	float deltaTime = 0.f;
+	sf::Clock clock;
 
 	// run the program as long as the window is open
 	while (window.isOpen()) {
-		sf::Event evnt;
 		
+		deltaTime = clock.restart().asSeconds();
+		
+		
+		sf::Event evnt;
 		//event loop
 		while (window.pollEvent(evnt)) {
-			
+
 
 			switch (evnt.type)
 			{
@@ -54,9 +54,16 @@ int main()
 			}
 		}
 
-		window.clear();
+		
+		//animation part
+		PlayerAnimation.update(2, deltaTime);
+		player.setTextureRect(PlayerAnimation.uvRect);
 
+		//displaying on screen part
+
+		window.clear(sf::Color::White);
 		window.draw(player);
+
 		//end the current frame;
 		window.display();
 	}
