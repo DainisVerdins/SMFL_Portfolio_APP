@@ -17,16 +17,23 @@ int main()
 
 
 	// create the window
-	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "First app", sf::Style::Close | sf::Style::Resize);
+	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "SFML playground", sf::Style::Close | sf::Style::Resize);
 	
 	sf::RectangleShape player(sf::Vector2f(SHAPE_SIZE, SHAPE_SIZE));
 	player.setPosition((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2));
 
 	sf::Texture playerTexture;
-	playerTexture.loadFromFile("./res/background.jpg");//need to add relative path to image// why from uper level of project not from exe file?
-
+	playerTexture.loadFromFile("./res/tux_from_linux.png");//need to add relative path to image// why from uper level of project not from exe file?
 	player.setTexture(&playerTexture);
 
+	sf::Vector2u textureSize = playerTexture.getSize();
+
+	//get size of one pinguine block
+	textureSize.x /= 3;
+	textureSize.y /= 9;
+
+	//get needed image part from whole image
+	player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8,textureSize.x,textureSize.y));
 
 	// run the program as long as the window is open
 	while (window.isOpen()) {
