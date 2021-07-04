@@ -21,6 +21,9 @@
     <ClCompile Include="src\animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\libs\Dummy.txt" />
@@ -488,9 +491,6 @@
     <Image Include="src\libs\SFML-2.5.1\doc\html\classsf_1_1AlResource.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\background.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="res\sfml-logo-small.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -797,6 +797,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

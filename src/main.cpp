@@ -12,9 +12,7 @@ constexpr auto FRAME_WIDTH = 680;
 constexpr auto FRAME_HEIGHT = 480;
 constexpr auto SHAPE_SIZE = 150.f;
 
-int main()
-{
-
+int main(){
 
 	// create the window
 	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "SFML playground", sf::Style::Close | sf::Style::Resize);
@@ -50,13 +48,12 @@ int main()
 				break;
 			default:
 				break;
-				//return -1;
 			}
 		}
 
 		
 		//animation part
-		PlayerAnimation.update(3, deltaTime);
+		PlayerAnimation.update(3, deltaTime,false);
 		player.setTextureRect(PlayerAnimation.uvRect);
 
 		//displaying on screen part

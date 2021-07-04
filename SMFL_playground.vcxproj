@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\animation.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
@@ -605,7 +606,6 @@
     <None Include="src\libs\SFML-2.5.1\readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\background.jpg" />
     <Image Include="res\sfml-logo-small.png" />
     <Image Include="res\tux_from_linux.png" />
     <Image Include="src\libs\SFML-2.5.1\doc\html\bc_s.png" />
@@ -613,6 +613,7 @@
     <Image Include="src\libs\SFML-2.5.1\doc\html\classsf_1_1AlResource.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\animation.h" />
     <ClInclude Include="src\libs\AudioFile.h" />
     <ClInclude Include="src\libs\SFML-2.5.1\include\SFML\Audio.hpp" />

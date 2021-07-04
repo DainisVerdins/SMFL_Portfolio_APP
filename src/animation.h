@@ -13,7 +13,7 @@ public:
 
 	//row - what row of animation will be accesed
 	//deltaTime - how long is took from one frame to another
-	void update(int row, float deltaTime);
+	void update(int row, float deltaTime, bool faceRight);
 
 	sf::IntRect uvRect;//texture rect in order to display animation
 
