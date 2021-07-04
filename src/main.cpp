@@ -56,7 +56,7 @@ int main()
 
 		
 		//animation part
-		PlayerAnimation.update(2, deltaTime);
+		PlayerAnimation.update(3, deltaTime);
 		player.setTextureRect(PlayerAnimation.uvRect);
 
 		//displaying on screen part

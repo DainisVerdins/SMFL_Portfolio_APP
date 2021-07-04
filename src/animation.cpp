@@ -34,7 +34,7 @@ Animation::~Animation()
 			currentImage.x = 0;
 		}
 	}
-
+	//where new animation image starts from texture (index of image * size of image)
 	uvRect.left = currentImage.x * uvRect.width;
 	uvRect.top = currentImage.y * uvRect.height;
 }
