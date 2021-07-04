@@ -7,7 +7,7 @@
 #include<string>
 #include<SFML/Graphics.hpp> //sf namespace
 #include"animation.h"
-
+#include"player.h"
 constexpr auto FRAME_WIDTH = 680;
 constexpr auto FRAME_HEIGHT = 480;
 constexpr auto SHAPE_SIZE = 150.f;
@@ -17,23 +17,29 @@ int main(){
 	// create the window
 	sf::RenderWindow  window(sf::VideoMode(FRAME_WIDTH, FRAME_HEIGHT), "SFML playground", sf::Style::Close | sf::Style::Resize);
 
-	sf::RectangleShape player(sf::Vector2f(SHAPE_SIZE, SHAPE_SIZE));
-	player.setPosition((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2));
+	//sf::RectangleShape player(sf::Vector2f(SHAPE_SIZE, SHAPE_SIZE));
+	//player.setPosition((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2));
+
+	
 
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("./res/tux_from_linux.png");//need to add relative path to image// why from uper level of project not from exe file?
-	player.setTexture(&playerTexture);
+	//player.setTexture(&playerTexture);
 
+	//from with time one image switches to another
+	const float imageSwitchTime = 0.2f;
+	//Animation PlayerAnimation(&playerTexture, sf::Vector2u(3, 9), imageSwitchTime);
+	
+	Player player(&playerTexture, sf::Vector2u(3, 9), imageSwitchTime, 100.5f);
+	
+	float deltaTime = 0.3f;
 
-	Animation PlayerAnimation(&playerTexture, sf::Vector2u(3, 9), 0.3f);
-
-	float deltaTime = 0.f;
 	sf::Clock clock;
-
 	// run the program as long as the window is open
 	while (window.isOpen()) {
 		
 		deltaTime = clock.restart().asSeconds();
+		
 		
 		
 		sf::Event evnt;
@@ -53,16 +59,17 @@ int main(){
 
 		
 		//animation part
-		PlayerAnimation.update(3, deltaTime,false);
-		player.setTextureRect(PlayerAnimation.uvRect);
+		player.update( deltaTime);
+
 
 		//displaying on screen part
 
 		window.clear(sf::Color::White);
-		window.draw(player);
+		player.draw(window);
 
 		//end the current frame;
 		window.display();
+
 	}
 
 	return 0;
