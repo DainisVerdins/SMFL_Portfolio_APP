@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include<iostream>
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed)
 	:animation(texture, imageCount, switchTime)
 {
@@ -7,9 +7,12 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	this->speed = speed;
 
 	body.setSize(sf::Vector2f(150.0f, 150.0f));
+	body.setOrigin(body.getSize()/2.0f);
+
 	body.setPosition(sf::Vector2f(260.0f, 160.0f));
 	this->row = 0;
 	this->body.setTexture(texture);
+	
 }
 
 Player::~Player()
@@ -22,22 +25,23 @@ void Player::update(float deltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		movement.x -= speed * deltaTime;
+		std::cout << movement.x << std::endl;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		movement.x += speed * deltaTime;
+		std::cout << movement.x << std::endl;
 	}
 
 	//from where image draw side start
 	if (movement.x==0.f)
 	{
-		//from left side
+		//from left side draw image
 		this->row = 0;
-
 	}
 	else
 	{
-		//from rigth side
+		//from rigth side draw image
 		this -> row = 1;
 
 		//on with direction is image will watch 
@@ -52,7 +56,7 @@ void Player::update(float deltaTime)
 
 	this->animation.update(row, deltaTime, this->faceRigth);
 	this->body.setTextureRect(animation.uvRect);
-	body.move(movement);
+	this->body.move(movement);
 }
 
 void Player::draw(sf::RenderWindow& window)

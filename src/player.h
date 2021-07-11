@@ -10,6 +10,11 @@ public:
 	void update(float deltaTime);
 	void draw(sf::RenderWindow & window);
 
+	//sets position of body image // left corner
+	void setPosition(sf::Vector2f position) { body.setPosition(position); };
+
+	//sf::Rect
+	sf::Vector2f getPosition() { return body.getPosition(); }
 
 private:
 	
