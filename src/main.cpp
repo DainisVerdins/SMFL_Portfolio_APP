@@ -67,7 +67,7 @@ int main() {
 
 		//displaying on screen part
 
-		window.clear(sf::Color::White);
+		window.clear(sf::Color(220,220,220)); //gray color of background
 		window.setView(mainWiew);
 		player.draw(window);
 

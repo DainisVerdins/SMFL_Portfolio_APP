@@ -24,6 +24,9 @@
     <ClCompile Include="src\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\sfml-logo-small.png">
@@ -38,6 +41,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
