@@ -24,7 +24,10 @@
     <ClCompile Include="src\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="collider.cpp">
+    <ClCompile Include="src\collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -43,7 +46,10 @@
     <ClInclude Include="src\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="collider.h">
+    <ClInclude Include="src\collider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

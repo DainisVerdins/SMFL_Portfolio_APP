@@ -8,6 +8,7 @@
 #include<SFML/Graphics.hpp> //sf namespace
 #include"animation.h"
 #include"player.h"
+#include"platform.h"
 constexpr auto FRAME_WIDTH = 680;
 constexpr auto FRAME_HEIGHT = 480;
 constexpr auto SHAPE_SIZE = 150.f;
@@ -26,6 +27,10 @@ int main() {
 
 	Player player(&playerTexture, sf::Vector2u(3, 9), imageSwitchTime, 100.5f);
 	player.setPosition(sf::Vector2f((FRAME_WIDTH / 2) - (SHAPE_SIZE / 2), (FRAME_HEIGHT / 2) - (SHAPE_SIZE / 2)));
+
+	Platform platform1(nullptr,sf::Vector2f(200,200),sf::Vector2f(500,200));
+
+
 
 	float deltaTime = 0.3f;
 	sf::Clock clock;
@@ -63,6 +68,9 @@ int main() {
 		//animation part
 		player.update(deltaTime);
 
+		//rises error init value must be not reference but lvalue
+		//platform1.GetCollider().checkCollision(player.getCollider(), 0.5f);
+
 		mainWiew.setCenter(player.getPosition());
 
 		//displaying on screen part
@@ -70,7 +78,7 @@ int main() {
 		window.clear(sf::Color(220,220,220)); //gray color of background
 		window.setView(mainWiew);
 		player.draw(window);
-
+		platform1.draw(window);
 		//end the current frame;
 		window.display();
 

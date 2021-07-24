@@ -163,7 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="collider.cpp" />
+    <ClCompile Include="src\platform.cpp" />
+    <ClCompile Include="src\collider.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\animation.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -173,7 +174,8 @@
     <Image Include="res\tux_from_linux.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collider.h" />
+    <ClInclude Include="src\platform.h" />
+    <ClInclude Include="src\collider.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\animation.h" />
   </ItemGroup>
