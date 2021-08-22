@@ -163,21 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\platform.cpp" />
-    <ClCompile Include="src\collider.cpp" />
-    <ClCompile Include="src\player.cpp" />
-    <ClCompile Include="src\animation.cpp" />
     <ClCompile Include="src\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="res\sfml-logo-small.png" />
-    <Image Include="res\tux_from_linux.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\platform.h" />
-    <ClInclude Include="src\collider.h" />
-    <ClInclude Include="src\player.h" />
-    <ClInclude Include="src\animation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
