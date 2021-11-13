@@ -1,87 +1,50 @@
-#include<SFML/Graphics.hpp>
+﻿#include<SFML/Graphics.hpp>
+#include<iostream>
 
+constexpr auto WINDOW_WIDTH = 640;
+constexpr auto WINDOW_HEIGHT = 480;
 
-void initShape(sf::RectangleShape& shape, sf::Vector2f const& pos, sf::Color const& color) 
-{
-	shape.setFillColor(color);
-	shape.setPosition(pos);
-	shape.setOrigin(shape.getSize() * 0.5f);//center of rect
-}
+int main(int argc, char** argv[]) {
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),"Bouncing mushroom.");
+	sf::Texture mushroomTexture;
 
-int main()
-{
-	sf::RenderWindow window{ sf::VideoMode{480,180},"bad squares"};
-	//sets frames per second
-	window.setFramerateLimit(60);
-
-	sf::Vector2f startPos = sf::Vector2f{ 50,50 };
-	sf::RectangleShape playerRect{ sf::Vector2f{ 50,50 } };
-	initShape(playerRect, startPos,sf::Color::Green);
-
-	sf::RectangleShape targetRect{ sf::Vector2f {50,50} };
-	initShape(targetRect, sf::Vector2f{ 400,50 }, sf::Color::Blue);
-
-	sf::RectangleShape badRect{ sf::Vector2f {50,100} };
-	initShape(badRect, sf::Vector2f{ 250,50 }, sf::Color::Red);
-	
-	while (window.isOpen())
+	if (!mushroomTexture.loadFromFile("./res/filename.png"))
 	{
-		//handle events
+		return -1;
+	}
+	
+	sf::Sprite mushroom(mushroomTexture);
+
+	sf::Vector2u size = mushroomTexture.getSize();
+	
+	mushroom.setOrigin(size.x / 2, size.y / 2);
+	sf::Vector2f increment(0.4f, 0.4f);
+
+	
+
+
+	while (window.isOpen()) {
 		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			
-			if (event.type==sf::Event::EventType::Closed)
-			{
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
-			//Always moving rigth
-			playerRect.move(1, 0);
-
-			//directions of movement
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-			{
-				playerRect.move(0, 1);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-			{
-				playerRect.move(0, -1);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-			{
-				playerRect.move(1, 0);
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-			{
-				playerRect.move(-1, 0);
-			}
-
-			//targer reached , you win exit game
-			if (playerRect.getGlobalBounds().intersects(targetRect.getGlobalBounds())) 
-			{
-				window.close();
-			}
-
-			//bad squer intersects you ose and restart game
-			if (playerRect.getGlobalBounds().intersects(badRect.getGlobalBounds()))
-			{
-				playerRect.setPosition(startPos);
-			}
-
 		}
-		//update scene
-
-
-		//Render cycle 
-		window.clear(sf::Color::Black);
-
-		window.draw(playerRect);
-		window.draw(targetRect);
-		window.draw(badRect);
-
-		//render obj
+		if ((mushroom.getPosition().x + (size.x / 2) >window.getSize().x && increment.x > 0) ||
+			(mushroom.getPosition().x - (size.x / 2) < 0 &&increment.x < 0))
+		{
+			// Reverse the direction on X axis.
+			increment.x = -increment.x;
+		}
+		if ((mushroom.getPosition().y + (size.y / 2) >window.getSize().y && increment.y > 0) ||
+			(mushroom.getPosition().y - (size.y / 2) < 0 &&increment.y < 0))
+		{// Reverse the direction on Y axis.
+			increment.y = -increment.y;
+		}
+		mushroom.setPosition(mushroom.getPosition() + increment);
+		window.clear(sf::Color(16, 16, 16, 255)); // Dark gray.
+		window.draw(mushroom); // Drawing our sprite.
 		window.display();
-
 	}
 	return 0;
 }
